@@ -16,8 +16,8 @@ get("/lists/new") do
 end
 
 post("/lists") do
-  name = params.fetch("name")
-  list = List.new({:name => name, :id => nil})
-  list.save()
+  name = params.fetch("list_name")
+  @list = List.new({:name => name, :id => nil})
+  @list.save()
   erb(:list_success)
 end
