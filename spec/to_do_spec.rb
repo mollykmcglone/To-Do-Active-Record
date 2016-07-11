@@ -1,9 +1,6 @@
 require('spec_helper.rb')
 
 describe(Task) do
-  before() do
-    Task.clear()
-  end
 
   describe("#==") do
     it("is the same task if it has the same description and list ID") do
@@ -15,7 +12,7 @@ describe(Task) do
 
   describe("#description") do
     it("gives the task a description") do
-      test_task = Task.new({:description => "vacuum your car"})
+      test_task = Task.new({:description => "vacuum your car", :list_id => 1})
       expect(test_task.description()).to(eq("vacuum your car"))
     end
   end
@@ -38,16 +35,6 @@ describe(Task) do
     it("lets you read the list ID out") do
       test_task = Task.new({:description => "learn SQL", :list_id => 1})
       expect(test_task.list_id()).to(eq(1))
-    end
-  end
-
-
-
-  describe(".clear") do
-    it("empties the task array of all the saved tasks") do
-    Task.new("do laundry").save()
-    Task.clear()
-    expect(Task.all()).to(eq([]))
     end
   end
 end
