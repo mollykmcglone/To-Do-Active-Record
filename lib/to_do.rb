@@ -10,10 +10,10 @@ class Task
   define_singleton_method(:all) do
     returned_tasks = DB.exec("SELECT * FROM tasks;")
     tasks = []
-    returned_tasks.each() do |task|
-      description = task.fetch("description")
-      list_id = task.fetch("list_id").to_i()
-      due_date = task.fetch("due_date")
+    returned_tasks.each() do |returned_task|
+      description = returned_task.fetch("description")
+      list_id = returned_task.fetch("list_id").to_i()
+      due_date = returned_task.fetch("due_date")
       tasks.push(Task.new({:description => description, :list_id => list_id, :due_date => due_date}))
     end
     tasks
